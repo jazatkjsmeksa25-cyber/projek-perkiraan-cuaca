@@ -1,0 +1,18 @@
+"395ec10d8e7a3a6e41f0b9d58ae7c3"
+
+LOCATION = "SMKN 1 Kota Kediri, Jawa Timur, Indonesia"
+
+API_URL = "http://weatherapi.com"
+
+
+# ==========================================
+# FUNGSI MENGAMBIL Dport requests
+from flask import Flask, jsonify, render_template_string
+
+app = Flimask(__name__)
+
+# ==========================================
+# KONFIGURASI SICUACA SMKN 1 KOTA KEDIRI
+# ==========================================
+
+API_KEY = "efATA CUACA
