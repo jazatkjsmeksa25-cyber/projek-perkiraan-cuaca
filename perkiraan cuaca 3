@@ -1,0 +1,29 @@
+ current = data["current"]
+        loc = data["location"]
+
+        hasil = {
+            "success": True,
+
+            "location": {
+                "name": loc["name"],
+                "region": loc["region"],
+                "localtime": loc["localtime"]
+            },
+
+            "current": {
+                "temp": current["temp_c"],
+                "feelslike": current["feelslike_c"],
+                "condition": current["condition"]["text"],
+                "icon": current["condition"]["icon"],
+                "humidity": current["humidity"],
+                "wind": current["wind_kph"],
+                "wind_dir": current["wind_dir"],
+                "pressure": current["pressure_mb"],
+                "uv": current["uv"],
+                "cloud": current["cloud"],
+                "visibility": current["vis_km"],
+                "updated": current["last_updated"]
+            },
+
+            "forecast": []
+        }
