@@ -1,0 +1,51 @@
+
+        for day in data["forecast"]["forecastday"]:
+
+            hasil["forecast"].append({
+                "date": day["date"],
+                "max": day["day"]["maxtemp_c"],
+                "min": day["day"]["mintemp_c"],
+                "condition": day["day"]["condition"]["text"],
+                "icon": day["day"]["condition"]["icon"],
+                "humidity": day["day"]["avghumidity"],
+                "rain": day["day"]["daily_chance_of_rain"]
+            })
+
+        return hasil
+
+    except requests.exceptions.Timeout:
+
+        return {
+            "success": False,
+            "message": "Koneksi ke server cuaca mengalami timeout."
+        }
+
+    except requests.exceptions.HTTPError:
+
+        try:
+            message = response.json().get(
+                "error", {}
+            ).get("message", "Kesalahan API.")
+
+        except ValueError:
+            message = "Respons API tidak valid."
+
+        return {
+            "success": False,
+            "message": message
+        }
+
+    except requests.exceptions.RequestException:
+
+        return {
+            "success": False,
+            "message": "Tidak dapat terhubung ke WeatherAPI."
+        }
+
+    except (KeyError, TypeError, ValueError):
+
+        return {
+            "success": False,
+            "message": "Data cuaca tidak lengkap atau tidak valid."
+        }
+
