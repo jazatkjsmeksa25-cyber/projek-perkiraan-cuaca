@@ -1,0 +1,32 @@
+API_KEY = "efATA CUACA
+# ==========================================
+
+def ambil_data_cuaca():
+
+    if API_KEY == "ef395ec10d8e7a3a6e41f0b9d58ae7c3" or not API_KEY:
+        return {
+            "success": False,
+            "message": "Silakan masukkan API Key WeatherAPI pada kode Python."
+        }
+
+    params = {
+        "key": API_KEY,
+        "q": LOCATION,
+        "days": 3,
+        "aqi": "yes",
+        "alerts": "yes",
+        "lang": "id"
+    }
+
+    try:
+
+        response = requests.get(
+            API_URL,
+            params=params,
+            timeout=15
+        )
+
+        response.raise_for_status()
+
+        data = response.json()
+
